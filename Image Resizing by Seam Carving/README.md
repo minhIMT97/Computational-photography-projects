@@ -1,0 +1,1 @@
+Link to seam carving lecture: https://people.csail.mit.edu/mrub/talks/SeamCarving_6.865.pdf

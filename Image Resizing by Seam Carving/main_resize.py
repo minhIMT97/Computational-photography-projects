@@ -94,10 +94,12 @@ def carve_column(img, M, backtrack):
 
     return img
 
-def crop_c (img, M, backtrack, scale_c):
+def crop_c (img, scale_c):
     r, c, _ = img.shape
     new_c = int(scale_c * c) + 1
-
+    
+    energy_map = calc_energy(img)
+    M, backtrack =  minimum_seam(img, energy_map)
     for i in range(c - new_c): # use range if you don't want to use tqdm
         img = carve_column(img, M, backtrack)
         energy_map = calc_energy(img)
@@ -105,9 +107,16 @@ def crop_c (img, M, backtrack, scale_c):
 
     return img
 
+#TODO: seam carving for row
+def crop_r (img, scale_c):
+    img = np.rot90(img, 1, (0, 1))
+    img = crop_c(img, scale_c)
+    img = np.rot90(img, 3, (0, 1))
+    return img
+
 img = cv2.imread('sample.JPG')
-energy_map = calc_energy(img)
-M, backtrack =  minimum_seam(img, energy_map)
-im = crop_c(img, M, backtrack, 0.9)
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+im = crop_r(img, 0.7)
 plt.gray()
 plt.imshow(im)
