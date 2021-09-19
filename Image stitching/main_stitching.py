@@ -317,7 +317,7 @@ def main():
     # print(video_mosaic.output_img.shape)
     # cv2.imwrite('mosaic23.jpg', video_mosaic.output_img)
 
-    video_path = 'Data/my-own.mp4'
+    video_path = 'Data/building.mp4'
     data = []
     cap = cv2.VideoCapture(video_path)
     is_first_frame = True
@@ -353,8 +353,8 @@ def main():
     cv2.waitKey(0)
     cap.release()
     cv2.destroyAllWindows()
-    cv2.imwrite('mosaicn.jpg', video_mosaic.output_img)
-    cv2.imwrite('fin.jpg', output)
+    # cv2.imwrite('mosaicn.jpg', video_mosaic.output_img)
+    # cv2.imwrite('fin.jpg', output)
 
 if __name__ == "__main__":
     main()
