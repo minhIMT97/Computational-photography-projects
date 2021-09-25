@@ -288,34 +288,6 @@ class Stitch:
     #     return self.output_img_final
 
 def main():
-    
-    # mypath = "D:/Computer Vision/KaerLabs/drive-download-20201104T161050Z-001/3_novembre/Hepatectomie_Patient2_3novembre/foie/stitching/Color/"
-    # # mypath = "D:/Computer Vision/10-35-13_260-test ROI/"
-    # # mypath = "D:/Computer Vision/Real-time-Video-Mosaic-master/Data/14-22-30_988-frame/14-22-30_988-frame/"
-    # # mypath = "D:/Computer Vision/Real-time-Video-Mosaic-master/Data/stitch-test-data/15-38-30_852-stitch/"
-    # # mypath = "D:/Computer Vision/Real-time-Video-Mosaic-master/Data/Stiching/13-56-13_971-frame/"
-    # # mypath = "D:/Computer Vision/KaerLabs/drive-download-20201104T161050Z-001/4_novembre/Lobectomie_4novembre/dos/Color/"
-    # files=sorted(glob.glob(mypath+"*.tif"))
-    # files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
-    # is_first_frame = True
-    # i = 0
-    # for filename in files:
-    #     img = cv2.imread(filename)
-
-    #     # img = cv2.resize(img,(int(img.shape[0]/2),int(img.shape[1]/2)), interpolation = cv2.INTER_AREA)
-
-    #     #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    #     img_enh = cv2.detailEnhance(img, sigma_s=50, sigma_r=0.65)
-    #     cv2.waitKey(1)
-    #     if is_first_frame:
-    #         video_mosaic = Stitch(img_enh, img)
-    #         is_first_frame = False
-    #     else:
-    #         video_mosaic.frame_process(img_enh, img)
-    #     i+=1
-    #     print(i)
-    # print(video_mosaic.output_img.shape)
-    # cv2.imwrite('mosaic23.jpg', video_mosaic.output_img)
 
     video_path = 'Data/building.mp4'
     data = []

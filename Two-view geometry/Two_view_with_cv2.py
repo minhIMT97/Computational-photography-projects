@@ -57,8 +57,14 @@ def triangulate(P1, pts1, P2, pts2):
     return X
 
 # Load images
-img1 = cv2.imread('data/im1.png',0)
-img2 = cv2.imread('data/im2.png',0)
+img1 = cv2.imread('data/im1.png')
+img2 = cv2.imread('data/im2.png')
+
+# img1 = cv2.detailEnhance(img1, sigma_r= 90, sigma_s= 0.45)
+# img2 = cv2.detailEnhance(img2, sigma_r= 90, sigma_s= 0.45)
+
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
 
 # Find key points with SIFT
 sift = cv2.SIFT_create()
@@ -85,9 +91,9 @@ pts1 = np.int32(pts1)
 pts2 = np.int32(pts2)
 
 # Draw matches
-# img3 = cv2.drawMatches(img1,kp1,img2,kp2,good, None,flags=2)
+img3 = cv2.drawMatches(img1,kp1,img2,kp2,good, None,flags=2)
 
-# plt.imshow(img3),plt.show()
+plt.imshow(img3),plt.show()
 
 # compute F
 F, mask = cv2.findFundamentalMat(pts1,pts2,cv2.FM_LMEDS)
@@ -114,7 +120,7 @@ print(P2)
 
 # Take one of them to do triangulation. The valid one reconstructs 3D points
 # with possitive Z values
-P2_i = np.matmul(K2,P2[:,:,2])
+P2_i = np.matmul(K2,P2[:,:,0])
 
 # Triangulation
 X = triangulate(P1, pts1, P2_i, pts2)
